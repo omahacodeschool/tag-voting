@@ -1,4 +1,4 @@
-class BallotsProductions < ActiveRecord::Base
+class BallotsProduction < ActiveRecord::Base
   has_many :productions
   has_many :ballots
   
