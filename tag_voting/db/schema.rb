@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(:version => 20150330184623) do
 
   create_table "voting_periods", :force => true do |t|
     t.datetime "open_date"
-    t.datetime "cose_date"
+    t.datetime "close_date"
     t.string   "season"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
