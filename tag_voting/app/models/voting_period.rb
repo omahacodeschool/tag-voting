@@ -1,3 +1,5 @@
 class VotingPeriod < ActiveRecord::Base
-  # attr_accessible :title, :body
+  has_many :ballots
+  
+  attr_accessible :open_date, :close_date, :season
 end
