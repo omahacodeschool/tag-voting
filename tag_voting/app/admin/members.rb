@@ -1,4 +1,3 @@
-include ObfuscateId
 
 ActiveAdmin.register Member do
   members_array = []
