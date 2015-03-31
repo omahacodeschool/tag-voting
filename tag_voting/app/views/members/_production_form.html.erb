@@ -1,0 +1,9 @@
+<h2>Viewed Productions</h2>
+<% VotingPeriod.last.productions.each do |production| %>
+  <%= form_tag("/vote/update_show", remote: true) do %>
+    <%= production.name  %>
+    <%= hidden_field_tag "seen[production_id]", production.id %>
+    <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
+    <%= submit_tag "#{@ballot.productions.include?(production) ? "I haven't seen this" : "I've seen this"}" %>
+  <% end %>
+<% end  %>    

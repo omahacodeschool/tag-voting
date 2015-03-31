@@ -13,5 +13,14 @@ class MembersController < ApplicationController
     render "show"
   end
   
+  def update_show
+    @ballot = Ballot.find_by_id(params[:seen][:ballot_id])
+    if params[:commit] == "I've seen this"
+      BallotsProduction.create(params[:seen])
+    else
+      BallotsProduction.where(params[:seen])[0].destroy
+    end
+  end
+  
   
 end

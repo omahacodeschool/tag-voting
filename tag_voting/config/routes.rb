@@ -4,6 +4,7 @@ TagVoting::Application.routes.draw do
   put 'vote/:id' => 'members#update'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  post 'vote/update_show' => 'members#update_show'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
