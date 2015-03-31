@@ -1,3 +1,4 @@
+
 ActiveAdmin.register Member do
   members_array = []
   batch_action :email do |members|
