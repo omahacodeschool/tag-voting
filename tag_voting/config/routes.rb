@@ -1,6 +1,7 @@
 TagVoting::Application.routes.draw do
 
-
+  get 'vote/:id' => 'members#show', as: :ballot
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
