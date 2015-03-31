@@ -4,7 +4,7 @@ class MemberMailer < ActionMailer::Base
   def ballot_email(member)
     @member = member
     @url = ballot_url(@member)
-    if @member.voted? == false
+    if @member.voted == false
       ballot = @member.ballots.create(voting_period_id: VotingPeriod.last.id)
       Award.all.each do |award|
         Nomination.create(ballot_id: ballot.id, award_id: award.id)
