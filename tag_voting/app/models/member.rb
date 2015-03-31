@@ -3,4 +3,5 @@ class Member < ActiveRecord::Base
   obfuscate_id
   attr_accessible :name, :email, :secret_voter_id, :voted
   
+  
 end
