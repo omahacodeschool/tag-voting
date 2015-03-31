@@ -1,2 +1,19 @@
-<h1>You Made It!</h1>
-<p><%= @member.name %></p>
+<h1>Ballot</h1>
+<%= form_for @ballot do |f| %>
+
+Award Category Nominations:
+    <%= f.fields_for :nominations do |ff| %>
+      <h3><%= ff.object.award.title %></h3>
+      <%= ff.label :nom1 %>
+      <%= ff.text_field :nom1 %><br>
+      <%= ff.label :nom2 %>
+      <%= ff.text_field :nom2 %><br>
+      <%= ff.label :nom3 %>
+      <%= ff.text_field :nom3 %><br>
+      <%= ff.label :nom4 %>
+      <%= ff.text_field :nom4 %><br>
+      <%= ff.label :nom5 %>
+      <%= ff.text_field :nom5 %><br>
+    <% end %>
+    <%= f.submit %>
+<% end %>

@@ -3,6 +3,6 @@ class Ballot < ActiveRecord::Base
   belongs_to :member
   belongs_to :voting_period
   has_many :nominations
-  
-  attr_accessible :member_id, :voting_period_id
+  accepts_nested_attributes_for :nominations
+  attr_accessible :member_id, :voting_period_id, :nominations_attributes
 end
