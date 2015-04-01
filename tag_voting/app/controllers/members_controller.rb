@@ -4,16 +4,16 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @ballot = @member.ballots.last
     @nominations = @ballot.nominations
+    if @ballot.voting_period.close_date > Time.now
+    else render "time_out"
+    end
   end
   
   def update
     @ballot = Ballot.find_by_id(params[:id])
     @ballot.update_attributes(params[:ballot])
     @ballot.member.update_attributes(voted: true)
-    redirect_to "/confirmation"
-  end
-  
-  def confirmation
+    render "show"
   end
   
   def update_show
