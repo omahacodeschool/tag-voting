@@ -1,9 +1,9 @@
 <h2>Viewed Productions</h2>
 <% VotingPeriod.last.productions.each do |production| %>
   <%= form_tag("/vote/update_show", remote: true) do %>
-    <%= production.name  %>
+    <%= label_tag 'submit', production.name  %>
     <%= hidden_field_tag "seen[production_id]", production.id %>
     <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
-    <%= image_submit_tag("#{@ballot.productions.include?(production) ? "checked-box.png" : "empty-box.png"}") %>
+    <%= image_submit_tag("#{@ballot.productions.include?(production) ? "checked-box.png" : "empty-box.png"}", width: "15px") %>
   <% end %>
 <% end  %>    

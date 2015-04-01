@@ -15,7 +15,7 @@ class MembersController < ApplicationController
   
   def update_show
     @ballot = Ballot.find_by_id(params[:seen][:ballot_id])
-    if params[:commit] == "I've seen this"
+    if BallotsProduction.where(params[:seen]) == []
       BallotsProduction.create(params[:seen])
     else
       BallotsProduction.where(params[:seen])[0].destroy
