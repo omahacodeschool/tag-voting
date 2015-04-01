@@ -10,7 +10,10 @@ class MembersController < ApplicationController
     @ballot = Ballot.find_by_id(params[:id])
     @ballot.update_attributes(params[:ballot])
     @ballot.member.update_attributes(voted: true)
-    render "show"
+    redirect_to "/confirmation"
+  end
+  
+  def confirmation
   end
   
   def update_show
