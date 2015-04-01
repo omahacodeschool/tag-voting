@@ -1,5 +1,6 @@
 ActiveAdmin.register Nomination do
-
+  filter :award
+  
   csv do  
     column :award_id do |e|
       n = Award.find(e.award_id)
