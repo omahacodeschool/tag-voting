@@ -1,5 +1,8 @@
 
 ActiveAdmin.register Member do
+  filter :name  
+  filter :email
+  filter :voted
   members_array = []
   batch_action :email do |members|
     members.each do |member|  
