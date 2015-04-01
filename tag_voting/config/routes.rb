@@ -5,6 +5,7 @@ TagVoting::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   post 'vote/update_show' => 'members#update_show'
+  get "/confirmation" => 'members#confirmation'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
