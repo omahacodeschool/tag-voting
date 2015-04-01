@@ -33,4 +33,5 @@ ActiveAdmin.register Nomination do
     column :nom4
     column :nom5
   end
+ 
 end
