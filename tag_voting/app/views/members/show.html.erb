@@ -1,13 +1,12 @@
-<h1>Ballot</h1>
+<h2>Ballot</h2>
 
 <div id="production_form_container">
   <%= render partial: "production_form", locals: {ballot: @ballot}  %>
 </div>
-    
-    
+        
 <%= form_for @ballot do |f| %>
 
-<h2>Award Category Nominations:</h2>
+<h3>Award Category Nominations:</h3>
     <%= f.fields_for :nominations do |ff| %>
       <h3><%= ff.object.award.title %></h3>
       <%= ff.label :nom1 %>
