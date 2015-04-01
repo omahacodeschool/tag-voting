@@ -17,8 +17,10 @@ class MembersController < ApplicationController
     @ballot = Ballot.find_by_id(params[:seen][:ballot_id])
     if BallotsProduction.where(params[:seen]) == []
       BallotsProduction.create(params[:seen])
+      @image = "/assets/checked-box.png"
     else
       BallotsProduction.where(params[:seen])[0].destroy
+      @image = "/assets/empty-box.png"
     end
   end
   

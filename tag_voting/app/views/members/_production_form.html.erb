@@ -4,6 +4,6 @@
     <%= label_tag 'submit', production.name  %>
     <%= hidden_field_tag "seen[production_id]", production.id %>
     <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
-    <%= image_submit_tag("#{@ballot.productions.include?(production) ? "checked-box.png" : "empty-box.png"}", width: "15px") %>
+    <%= image_submit_tag("#{@ballot.productions.include?(production) ? "checked-box.png" : "empty-box.png"}", width: "15px", id: "#{production.id}_submit", class: "checkbox") %>
   <% end %>
 <% end  %>    

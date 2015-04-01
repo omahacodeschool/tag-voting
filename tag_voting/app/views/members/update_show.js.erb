@@ -1,2 +1,2 @@
-$("#production_form_container").html("<%= escape_javascript(render partial: 'production_form',
-locals: { ballot: @ballot } ) %>");
+<% sleep(1) %>
+$("#<%= params[:seen][:production_id] %>_submit")[0].src = "<%= @image %>" 
