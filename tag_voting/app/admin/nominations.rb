@@ -1,15 +1,9 @@
 ActiveAdmin.register Nomination do
   filter :award
-  
+  #[TODO]figure out if we can include a .includes for award eager loading
   csv do  
     column :award_id do |e|
-      n = Award.find(e.award_id)
-      if (n)
-        "#{n.title}"
-      else
-        ""
-      end
-      
+      e.award_title
     end
     column :nom1
     column :nom2
@@ -20,12 +14,7 @@ ActiveAdmin.register Nomination do
   
   index do
     column :award_id, sortable: :award_id do |e|
-      n = Award.find(e.award_id)
-      if (n)
-        "#{n.title}"
-      else
-        ""
-      end
+      e.award_title
     end
     column :nom1
     column :nom2
