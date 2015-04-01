@@ -4,6 +4,9 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @ballot = @member.ballots.last
     @nominations = @ballot.nominations
+    if @ballot.voting_period.close_date > Time.now
+    else render "time_out"
+    end
   end
   
   def update
