@@ -1,4 +1,5 @@
 ActiveAdmin.register Ballot do
+  filter :voting_period
   show do
     panel "Nominations" do
       table_for ballot.nominations do
@@ -17,7 +18,7 @@ ActiveAdmin.register Ballot do
         column :nom5
       end 
     end
-    panel "Productions" do
+    panel "Productions seen: #{ballot.productions.size}" do
       table_for ballot.productions do
         column :name
         column :theater
