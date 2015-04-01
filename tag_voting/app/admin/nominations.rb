@@ -1,6 +1,6 @@
 ActiveAdmin.register Nomination do
   filter :award
-  #[TODO]figure out if we can include a .includes for award eager loading
+  #TODO figure out if we can include a .includes for award eager loading
   csv do  
     column :award_id do |e|
       e.award_title

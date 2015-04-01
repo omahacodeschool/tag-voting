@@ -1,13 +1,13 @@
 class MembersController < ApplicationController
   
   def show
-    #[TODO]add error check if member isn't found
+    #TODO add error check if member isn't found
     @member = Member.find(params[:id])
-    #[TODO]change ballots.last to current_ballot method (custom)
+    #TODO change ballots.last to current_ballot method (custom)
     @ballot = @member.ballots.includes(:productions).last
     @voting_period = @ballot.voting_period
     @nominations = @ballot.nominations.includes(:award)
-    #[TODO]add method to check if the voting period is closed, move check up
+    #TODO add method to check if the voting period is closed, move check up
     if @voting_period.close_date < Time.now 
       render "time_out"
     end
@@ -15,7 +15,7 @@ class MembersController < ApplicationController
   
   def update
     @ballot = Ballot.find_by_id(params[:id])
-    #[TODO]Check that at least one show has been seen before accepting ballot
+    #TODO Check that at least one show has been seen before accepting ballot
     @ballot.update_attributes(params[:ballot])
     @ballot.member.update_attribute("voted", true)
     render "confirmation"
