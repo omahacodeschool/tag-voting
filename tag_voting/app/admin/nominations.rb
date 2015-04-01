@@ -1,5 +1,6 @@
 ActiveAdmin.register Nomination do
-
+  filter :award
+  
   csv do  
     column :award_id do |e|
       n = Award.find(e.award_id)
@@ -18,8 +19,7 @@ ActiveAdmin.register Nomination do
   end
   
   index do
-    column :award_id, sortable: do |e|
-    column :award_id do |e|
+    column :award_id, sortable: :award_id do |e|
       n = Award.find(e.award_id)
       if (n)
         "#{n.title}"
