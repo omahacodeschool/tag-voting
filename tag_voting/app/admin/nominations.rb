@@ -1,4 +1,11 @@
 ActiveAdmin.register Nomination do
+  
+  controller do
+      def scoped_collection
+        super.includes :award
+      end
+    end
+    
   filter :award
   #TODO figure out if we can include a .includes for award eager loading
   csv do  

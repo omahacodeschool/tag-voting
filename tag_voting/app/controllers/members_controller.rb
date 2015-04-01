@@ -1,24 +1,29 @@
 class MembersController < ApplicationController
   
   def show
-    #TODO add error check if member isn't found
-    @member = Member.find(params[:id])
-    #TODO change ballots.last to current_ballot method (custom)
-    @ballot = @member.ballots.includes(:productions).last
-    @voting_period = @ballot.voting_period
-    @nominations = @ballot.nominations.includes(:award)
-    #TODO add method to check if the voting period is closed, move check up
-    if @voting_period.close_date < Time.now 
-      render "time_out"
+    begin
+      @member = Member.find(params[:id])
+      @ballot = @member.current_ballot
+      @voting_period = @ballot.voting_period
+      if @ballot.closed?(@voting_period.close_date) 
+        render "time_out"
+      end
+      @nominations = @ballot.nominations.includes(:award)
+    rescue ActiveRecord::RecordNotFound
+      render "not_found"
     end
   end
-  
+
   def update
-    @ballot = Ballot.find_by_id(params[:id])
-    #TODO Check that at least one show has been seen before accepting ballot
+    @ballot = Ballot.includes(:productions, :member).find_by_id(params[:id])
     @ballot.update_attributes(params[:ballot])
+    if @ballot.no_productions?
+      flash[:alert] = "You must have at least one production checked as seen to submit a ballot."
+      redirect_to ballot_path(@ballot.member)
+    else
     @ballot.member.update_attribute("voted", true)
-    render "confirmation"
+    redirect_to "confirmation"
+    end
   end
   
   def update_show
@@ -31,6 +36,5 @@ class MembersController < ApplicationController
       @image = "/assets/empty-box.png"
     end
   end
-  
   
 end

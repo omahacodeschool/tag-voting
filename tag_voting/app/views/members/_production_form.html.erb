@@ -5,7 +5,6 @@
   <%= form_tag("/vote/update_show", remote: true) do %>
     <%= hidden_field_tag "seen[production_id]", production.id %>
     <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
-<!--TODO ballot needs has_seen?(production_id) to check include  -->
-    <%= image_submit_tag("#{@ballot.productions.include?(production) ? "checked-box.png" : "empty-box.png"}", width: "15px", id: "#{production.id}_submit", class: "checkbox") %>
+    <%= image_submit_tag("#{@ballot.has_seen?(production.id) ? "checked-box.png" : "empty-box.png"}", width: "15px", id: "#{production.id}_submit", class: "checkbox") %>
   <% end %>
 <% end  %>    
