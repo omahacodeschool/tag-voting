@@ -1,5 +1,8 @@
 require File.expand_path('../boot', __FILE__)
 
+config.time_zone = 'Central Time (US & Canada)'
+ config.active_record.default_timezone = 'Central Time (US & Canada)'
+ 
 require 'rails/all'
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
