@@ -1,10 +1,32 @@
-<h2>Viewed Productions</h2>
-<% @voting_period.productions.each do |production| %>
-<p><%= production.theater %>- |  <%= production.name %>  |  Genre: <%= production.genre %>  |  Year Produced: <%= production.year %></p>
 
-  <%= form_tag("/vote/update_show", remote: true) do %>
-    <%= hidden_field_tag "seen[production_id]", production.id %>
-    <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
-    <%= image_submit_tag("#{@ballot.has_seen?(production.id) ? "checked-box.png" : "empty-box.png"}", width: "15px", id: "#{production.id}_submit", class: "checkbox") %>
-  <% end %>
-<% end  %>    
+<!-- Table -->
+  <div class="container">
+    <table class="table">
+    <h3 class="text-danger">Viewed Productions</h3>
+    <p>Please select all the productions you attended. (You must check at least one in order to be eligible to nominate.):</p>
+
+        <thead>
+          <tr>
+            <th>Seen?</th>
+            <th>Production</th>
+            <th>Theater</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <% @voting_period.productions.each do |production| %>
+          <%= form_tag("/vote/update_show", remote: true) do %>
+            <th scope="row"><%= image_submit_tag("#{@ballot.has_seen?(production.id) ? "checked-box.png" : "empty-box.png"}", width: "20px", id: "#{production.id}_submit", class: "checkbox") %></th>
+            <td><%= production.name %></td>
+            <td><%= production.theater %></td>
+            <td><%= production.year %></td>
+          </tr>
+        </tbody>
+        <%= hidden_field_tag "seen[production_id]", production.id %>
+        <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
+          <% end %>
+      <% end  %>
+
+    </table>
+   </div>

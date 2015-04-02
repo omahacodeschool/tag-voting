@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TagVoting</title>
+  <title>Tag Nominations</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
 
-<%= yield %>
+<body>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <div>
+           <%= image_tag("TAG-Website-Elements-logo2.png") %>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </nav>  
+  
+  <div class="container">
+    <%= yield %>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="text-muted pull-left"><a href="http://theatreartsguild.com/contact-form/" target="blank">Contact</a>
+      </p>
+
+      <p class="text-muted pull-right">&copy; 2015 TAG Awards &middot; <a href="http://theatreartsguild.com/awards/award-process/" target="blank">Learn More</a>
+      </p>
+    </div>
+   </footer>
 
 </body>
 </html>
