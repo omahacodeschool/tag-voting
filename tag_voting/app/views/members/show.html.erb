@@ -1,5 +1,7 @@
 <div class="container">
-  <h2>Ballot</h2>
+  
+  <h2>Nominations</h2>
+  
   <% if flash[:alert] %>
     <div class="alert"><%= flash[:alert] %></div>
   <% end %>
@@ -9,10 +11,11 @@
   </div>
 
   <div>
-  <h3>Award Category Nominations:</h3>
+  <h3 class="text-danger">Award Category Nominations:</h3>
+  <p>Please write in up to five nominations for each category. You may only nominate for productions which you have seen:</p>
     <%= form_for @ballot do |f| %>
       <%= f.fields_for :nominations, @nominations do |ff| %>
-        <%= ff.object.award.title %>
+        <h4><%= ff.object.award.title %></h4>
           <div class="well">
           <%= ff.label :nom1 %>
           <%= ff.text_field :nom1 %><br>
