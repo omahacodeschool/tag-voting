@@ -1,4 +1,7 @@
 ActiveAdmin.register Ballot do
+  
+  require 'csv'
+  
   filter :voting_period
   
   prods_array = []
