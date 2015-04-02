@@ -24,7 +24,7 @@
         </thead>
         <tbody>
           <tr>
-          <% VotingPeriod.last.productions.each do |production| %>
+          <% @voting_period.productions.each do |production| %>
           <%= form_tag("/vote/update_show", remote: true) do %>
             <th scope="row"><%= image_submit_tag("#{@ballot.has_seen?(production.id) ? "checked-box.png" : "empty-box.png"}", width: "20px", id: "#{production.id}_submit", class: "checkbox") %></th>
             <td><%= production.name %></td>
