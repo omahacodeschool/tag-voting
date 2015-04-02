@@ -1,5 +1,6 @@
 TagVoting::Application.routes.draw do
 
+  
   get 'vote/:id' => 'members#show', as: :ballot
   put 'vote/:id' => 'members#update'
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -56,7 +57,7 @@ TagVoting::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+  root :to => 'admin/dashboard#index'
 
   # See how all your routes lay out with "rake routes"
 
