@@ -10,7 +10,6 @@ ActiveAdmin.register_page "Dashboard" do
  #        small I18n.t("active_admin.dashboard_welcome.call_to_action")
  #      end
  #    end
- ActiveAdmin.register_page "Dashboard" do
    content do
      para "Welcome to the Tag Voting Admin Site!"
      
@@ -42,7 +41,7 @@ ActiveAdmin.register_page "Dashboard" do
      Selected'. An excel file will be automatically downloaded to your computer."
      
    end
- end
+ 
 
   # Here is an example of a simple dashboard with columns and panels.
     #
