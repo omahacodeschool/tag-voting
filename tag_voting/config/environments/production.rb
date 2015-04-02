@@ -30,6 +30,8 @@ TagVoting::Application.configure do
   config.assets.compile = false
   
   config.assets.precompile += %w[active_admin.css active_admin.js]
+  
+  config.assets.initialize_on_precompile = true
 
   # Generate digests for assets URLs
   config.assets.digest = true
