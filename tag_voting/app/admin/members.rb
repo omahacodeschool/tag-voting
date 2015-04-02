@@ -1,5 +1,11 @@
 
 ActiveAdmin.register Member do
+  
+  index do
+    column :name
+    column :email
+  end
+  
   filter :name  
   filter :email
   filter :voted
