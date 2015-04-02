@@ -33,7 +33,7 @@ ActiveAdmin.register_page "Dashboard" do
      they won't receive their ballot! Once that's finished select them all and 
      click 'Batch Options'. Click 'E-mail Selected' and that's it! Ballots have
      been sent to every selected TAG member. You can also select individual
-     member if you ever need to resend a ballot to a particular member."
+     member if you ever need to resend a ballot to a particular members."
      
      para "**Finally to view submitted ballots, click the 'Ballots' tab. You can
      click each individual ballot to see the member's nominations and the 
