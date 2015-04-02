@@ -13,8 +13,8 @@
  *= require_tree .
  */
 
-body {
-  padding-top: 100px;
+img {
+  padding-bottom: 100px;
 }
 
 .alert {

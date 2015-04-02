@@ -3,12 +3,11 @@
 <div id="production_form_container">
   <%= render partial: "production_form", locals: {ballot: @ballot}  %>
 </div>
-        
-<%= form_for @ballot do |f| %>
 
 <h3>Award Category Nominations:</h3>
+  <%= form_for @ballot do |f| %>
     <%= f.fields_for :nominations do |ff| %>
-      <h3><%= ff.object.award.title %></h3>
+      <div class="well"><h4><%= ff.object.award.title %></h4>
       <%= ff.label :nom1 %>
       <%= ff.text_field :nom1 %><br>
       <%= ff.label :nom2 %>
@@ -19,6 +18,7 @@
       <%= ff.text_field :nom4 %><br>
       <%= ff.label :nom5 %>
       <%= ff.text_field :nom5 %><br>
+      </div>
     <% end %>
-    <%= f.submit %>
+   <%= f.submit %>
 <% end %>
