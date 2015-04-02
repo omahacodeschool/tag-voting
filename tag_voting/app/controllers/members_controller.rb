@@ -22,8 +22,11 @@ class MembersController < ApplicationController
       redirect_to ballot_path(@ballot.member)
     else
     @ballot.member.update_attribute("voted", true)
-    redirect_to "confirmation"
+    redirect_to "/confirmation"
     end
+  end
+  
+  def confirmation
   end
   
   def update_show
