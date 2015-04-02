@@ -1,4 +1,4 @@
-<h2>Viewed Productions</h2>
+<!-- <h2>Viewed Productions</h2>
 <% @voting_period.productions.each do |production| %>
 <p><%= production.theater %>- |  <%= production.name %>  |  Genre: <%= production.genre %>  |  Year Produced: <%= production.year %></p>
 
@@ -7,4 +7,35 @@
     <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
     <%= image_submit_tag("#{@ballot.has_seen?(production.id) ? "checked-box.png" : "empty-box.png"}", width: "15px", id: "#{production.id}_submit", class: "checkbox") %>
   <% end %>
-<% end  %>    
+<% end  %>     -->
+
+<!-- Table -->
+  <div class="container">
+    <table class="table">
+    <h3>Viewed Productions</h3>
+
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Production</th>
+            <th>Theater</th>
+            <th>Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+          <% VotingPeriod.last.productions.each do |production| %>
+          <%= form_tag("/vote/update_show", remote: true) do %>
+            <th scope="row"><%= image_submit_tag("#{@ballot.has_seen?(production.id) ? "checked-box.png" : "empty-box.png"}", width: "20px", id: "#{production.id}_submit", class: "checkbox") %></th>
+            <td><%= production.name %></td>
+            <td><%= production.theater %></td>
+            <td><%= production.year %></td>
+          </tr>
+        </tbody>
+        <%= hidden_field_tag "seen[production_id]", production.id %>
+        <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
+          <% end %>
+      <% end  %>
+
+    </table>
+   </div>

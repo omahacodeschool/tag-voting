@@ -1,12 +1,12 @@
-<h1>Ballot</h1>
+<!-- <h1>Ballot</h1>
 <% if flash[:alert] %>
   <div class="alert"><%= flash[:alert] %></div>
 <% end %>
 <div id="production_form_container">
   <%= render partial: "production_form", locals: {ballot: @ballot}  %>
 </div>
-    
-    
+
+
 <%= form_for @ballot do |f| %>
 
 <h2>Award Category Nominations:</h2>
@@ -21,7 +21,37 @@
       <%= ff.label :nom4 %>
       <%= ff.text_field :nom4 %><br>
       <%= ff.label :nom5 %>
-      <%= ff.text_field :nom5 %><br>
+      <%= ff.text_field :nom5 %><br> -->
+      
+<div class="container">
+  <h2>Ballot</h2>
+  <% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+  <% end %>
+
+  <div id="production_form_container">
+    <%= render partial: "production_form", locals: {ballot: @ballot}  %>
+  </div>
+
+  <div>
+  <h3>Award Category Nominations:</h3>
+    <%= form_for @ballot do |f| %>
+      <%= f.fields_for :nominations, @nominations do |ff| %>
+        <%= ff.object.award.title %>
+          <div class="well">
+          <%= ff.label :nom1 %>
+          <%= ff.text_field :nom1 %><br>
+          <%= ff.label :nom2 %>
+          <%= ff.text_field :nom2 %><br>
+          <%= ff.label :nom3 %>
+          <%= ff.text_field :nom3 %><br>
+          <%= ff.label :nom4 %>
+          <%= ff.text_field :nom4 %><br>
+          <%= ff.label :nom5 %>
+          <%= ff.text_field :nom5 %><br>
+          </div>
+      <% end %>
+     <p><%= f.submit "Submit Nominations", class: "btn btn-success" %></p>
     <% end %>
-    <%= f.submit %>
-<% end %>
+   </div>
+</div>
