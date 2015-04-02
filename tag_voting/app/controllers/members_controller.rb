@@ -9,7 +9,7 @@ class MembersController < ApplicationController
         render "time_out"
       end
       @nominations = @ballot.nominations.includes(:award)
-    rescue ActiveRecord::RecordNotFound
+    rescue ActiveRecord::RecordNotFound, ActiveRecord::StatementInvalid
       render "not_found"
     end
   end
