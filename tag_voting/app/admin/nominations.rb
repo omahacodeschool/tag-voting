@@ -1,15 +1,15 @@
 ActiveAdmin.register Nomination do
-  filter :award
   
+  controller do
+      def scoped_collection
+        super.includes :award
+      end
+    end
+    
+  filter :award
   csv do  
     column :award_id do |e|
-      n = Award.find(e.award_id)
-      if (n)
-        "#{n.title}"
-      else
-        ""
-      end
-      
+      e.award_title
     end
     column :nom1
     column :nom2
@@ -20,12 +20,7 @@ ActiveAdmin.register Nomination do
   
   index do
     column :award_id, sortable: :award_id do |e|
-      n = Award.find(e.award_id)
-      if (n)
-        "#{n.title}"
-      else
-        ""
-      end
+      e.award_title
     end
     column :nom1
     column :nom2

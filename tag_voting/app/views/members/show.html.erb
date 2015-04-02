@@ -1,5 +1,7 @@
 <h1>Ballot</h1>
-
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
+<% end %>
 <div id="production_form_container">
   <%= render partial: "production_form", locals: {ballot: @ballot}  %>
 </div>
@@ -8,7 +10,7 @@
 <%= form_for @ballot do |f| %>
 
 <h2>Award Category Nominations:</h2>
-    <%= f.fields_for :nominations, f.object.nominations.order(:id) do |ff| %>
+    <%= f.fields_for :nominations, @nominations do |ff| %>
       <h3><%= ff.object.award.title %></h3>
       <%= ff.label :nom1 %>
       <%= ff.text_field :nom1 %><br>
