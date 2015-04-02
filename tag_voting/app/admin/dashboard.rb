@@ -16,12 +16,30 @@ ActiveAdmin.register_page "Dashboard" do
      
      para "Click on the tabs above to view each section."
      
-     para "**To generate a new email and resend a ballot to a member, 
-     go to the Members tab and select the Member ID. Then click on batch actions.
-     Then select 'Email Selected'. "
+     para "**First things first! Click the 'Voting Period' tab and create a new 
+     voting period(season). Do this at the start of every new season to ensure that the 
+     awards, productions, and ballots are stored separately year to year."
      
-     para "**To View/Print Member voting, go to the Nominations page.
-     At the bottom, click on the CSV link to export."
+     para "**Next click on the 'Productions' tab and add all of the productions 
+     for the current voting period. As more voting periods accrue please ensure
+     that new productions are being stored under the proper voting period. This
+     will make sorting by voting period a breeze!"
+     
+     para "**All of the awards from last year have been pre-populated, but click 
+     on the 'Awards' tab if you need to create or delete any awards."
+
+     para "**Now click on the 'Member' tab and add all of the TAG members. 
+     Be sure to include a valid E-mail address for all of your members otherwise
+     they won't receive their ballot! Once that's finished select them all and 
+     click 'Batch Options'. Click 'E-mail Selected' and that's it! Ballots have
+     been sent to every selected TAG member. You can also select individual
+     member if you ever need to resend a ballot to a particular member."
+     
+     para "**Finally to view submitted ballots, click the 'Ballots' tab. You can
+     click each individual ballot to see the member's nominations and the 
+     productions they've seen. To export ballots in handy excel format simply
+     select the desired ballots and click 'Batch Actions' followed by 'Excel
+     Selected'. An excel file will be automatically downloaded to your computer."
      
    end
  end
