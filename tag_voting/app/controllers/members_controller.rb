@@ -5,7 +5,7 @@ class MembersController < ApplicationController
       @member = Member.find(params[:id])
       @ballot = @member.current_ballot
       @voting_period = @ballot.voting_period
-      if @ballot.closed?(@voting_period.close_date) 
+      if @ballot.closed?
         render "time_out"
       end
       @nominations = @ballot.nominations.includes(:award)
