@@ -1,6 +1,7 @@
 <!-- Table -->
-      <table class="table">
-      	<h3>Viewed Productions</h3>
+  <div class="container">
+    <table class="table">
+    <h3>Viewed Productions</h3>
 
         <thead>
           <tr>
@@ -12,19 +13,18 @@
         </thead>
         <tbody>
           <tr>
-<% VotingPeriod.last.productions.each do |production| %>
-  <%= form_tag("/vote/update_show", remote: true) do %>
-
-            <th scope="row"><%= image_submit_tag("#{@ballot.productions.include?(production) ? "checked-box.png" : "empty-box.png"}", width: "25px", id: "#{production.id}_submit", class: "checkbox") %></th>
+          <% VotingPeriod.last.productions.each do |production| %>
+          <%= form_tag("/vote/update_show", remote: true) do %>
+            <th scope="row"><%= image_submit_tag("#{@ballot.productions.include?(production) ? "checked-box.png" : "empty-box.png"}", width: "20px", id: "#{production.id}_submit", class: "checkbox") %></th>
             <td><%= production.name %></td>
             <td><%= production.theater %></td>
             <td><%= production.year %></td>
           </tr>
         </tbody>
-            <%= hidden_field_tag "seen[production_id]", production.id %>
-    <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
-    <% end %>
-<% end  %>
+        <%= hidden_field_tag "seen[production_id]", production.id %>
+        <%= hidden_field_tag "seen[ballot_id]", @ballot.id %>
+          <% end %>
+      <% end  %>
 
-      </table>
-    </div>
+    </table>
+   </div>
