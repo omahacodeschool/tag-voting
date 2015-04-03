@@ -32,13 +32,17 @@ ActiveAdmin.register_page "Dashboard" do
      they won't receive their ballot! Once that's finished select them all and 
      click 'Batch Options'. Click 'E-mail Selected' and that's it! Ballots have
      been sent to every selected TAG member. You can also select individual
-     member if you ever need to resend a ballot to a particular members."
+     members if you ever need to resend a ballot to a particular member."
      
      para "**Finally to view submitted ballots, click the 'Ballots' tab. You can
      click each individual ballot to see the member's nominations and the 
      productions they've seen. To export ballots in handy excel format simply
      select the desired ballots and click 'Batch Actions' followed by 'Excel
-     Selected'. An excel file will be automatically downloaded to your computer."
+     Selected'. An excel file will be automatically downloaded to your computer.
+     You can also select the 'Nominations' tab to print out all of the  
+     nominations from every ballot at once, or sort by award title and print out 
+     everyone's nominations for that particular award. This can be achieved by
+     selecting the 'CSV' tag at the bottom of the page." 
      
    end
  
