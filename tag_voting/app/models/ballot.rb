@@ -17,8 +17,8 @@ class Ballot < ActiveRecord::Base
 #
 #   State Changes: none
   
-  def closed?
-    self.voting_period.close_date < Time.now 
+  def open?
+    self.voting_period.close_date > Time.now 
   end
   
   # Public Method #no_productions?

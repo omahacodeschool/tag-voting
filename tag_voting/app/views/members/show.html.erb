@@ -13,7 +13,8 @@
   <div>
   <h3 class="text-danger">Award Category Nominations:</h3>
   <p>Please write in up to five nominations for each category. You may only nominate for productions which you have seen:</p>
-    <%= form_for @ballot do |f| %>
+    <%= form_for @ballot, url: "/submit" do |f| %>
+    <%= f.hidden_field :id  %>
       <%= f.fields_for :nominations, @nominations do |ff| %>
         <h4><%= ff.object.award.title %></h4>
           <div class="well">
