@@ -1,5 +1,8 @@
 ActiveAdmin.register Nomination do
   
+  actions :all, except: [:new]
+  
+  
   controller do
       def scoped_collection
         super.includes :award

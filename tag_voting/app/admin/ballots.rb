@@ -2,7 +2,7 @@ ActiveAdmin.register Ballot do
   
   require 'csv'
   
-  
+  actions :all, except: [:new, :edit]
   
   filter :voting_period
   
@@ -40,6 +40,9 @@ ActiveAdmin.register Ballot do
   end
   
   show do
+    
+    
+    
     panel "Nominations" do
       table_for ballot.nominations.includes(:award) do
         column :award_id, sortable: :award_id do |e|
