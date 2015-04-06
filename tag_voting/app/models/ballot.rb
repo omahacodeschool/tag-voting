@@ -4,7 +4,7 @@ class Ballot < ActiveRecord::Base
   belongs_to :member
   belongs_to :voting_period
   has_many :nominations, dependent: :destroy, order: "id"
-  accepts_nested_attributes_for :nominations
+  accepts_nested_attributes_for :nominations, :allow_destroy => true
   attr_accessible :member_id, :voting_period_id, :nominations_attributes
 
 
