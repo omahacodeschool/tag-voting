@@ -4,7 +4,7 @@ TagVoting::Application.configure do
   # Code is not reloaded between requests
   config.cache_classes = true
   
-  Rails.application.routes.default_url_options[:host] = 'tag-voting-staging.herokuapp.com'
+  Rails.application.routes.default_url_options[:host] = 'tag-voting.herokuapp.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
