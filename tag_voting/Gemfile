@@ -6,6 +6,7 @@ gem 'rails', '3.2.21'
 gem 'test-unit'
 gem 'activeadmin', :git => 'https://github.com/activeadmin/activeadmin.git', :branch => '0-6-stable'
 gem "jquery-rails", "< 3.0.0"
+gem 'figaro'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
