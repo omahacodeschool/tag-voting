@@ -10,7 +10,6 @@ ActiveAdmin.register Ballot do
     actions :all, except: [:new, :edit]
   index do
     selectable_column
-    column :id
     column :member_identification
     column :created_at
     column :updated_at
