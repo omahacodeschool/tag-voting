@@ -51,4 +51,8 @@ class Ballot < ActiveRecord::Base
     self.member.member_identification
   end
   
+  def ballot_title
+    "Ballot ##{self.member_identification}"
+  end
+    
 end

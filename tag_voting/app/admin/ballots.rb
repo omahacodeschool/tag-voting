@@ -53,7 +53,7 @@ ActiveAdmin.register Ballot do
     send_data csv.encode('Windows-1251'), type: 'text/csv; charset=windows-1251; header=present', disposition: "attachment; filename=report.csv"
   end
   
-  show title: :member_identification do
+  show title: :ballot_title do
     
     h3 "Member Identification: " + ballot.member.member_identification.to_s
     
