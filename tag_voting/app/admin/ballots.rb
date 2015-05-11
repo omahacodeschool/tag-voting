@@ -9,6 +9,7 @@ ActiveAdmin.register Ballot do
     end
     actions :all, except: [:new, :edit]
   index do
+    selectable_column
     column :id
     column :member_identification
     column :created_at
@@ -23,15 +24,18 @@ ActiveAdmin.register Ballot do
   prods_array = []
   noms_array = []
   member_id = 0
+  voting_period = ""
   batch_action :excel do |ballots|
     ballots.each do |ballot|
-      ballot = Ballot.includes(:member, {nominations: [:award]}, :productions).find_by_id(ballot.to_i)
+      ballot = Ballot.includes(:member, {nominations: [:award]}, :productions, :voting_period).find_by_id(ballot.to_i)
       member_id = ballot.member.member_identification.to_s
       noms_array << ballot.nominations
-      prods_array << ballot.productions
+      prods_array = ballot.productions
+      voting_period = ballot.voting_period.season
     end
     csv = CSV.generate( encoding: 'Windows-1251' ) do |csv|
-      csv << [ "Member Identification: " + member_id ]
+      csv << [ "Ballot ##{member_id}" ]
+      csv << [ "Voting Period: #{voting_period}"]
       noms_array.flatten.each do |nom|
         csv << [ nom.award_title ]
         csv << [ nom.nom1 ]  
@@ -46,6 +50,7 @@ ActiveAdmin.register Ballot do
         csv << [ prod.theater ]
         csv << [ prod.genre ]
         csv << [ prod.year ]
+        csv << [ "-----------" ]
         
       end
       csv << [ "Productions Seen: #{prods_array.length}"]
@@ -55,7 +60,7 @@ ActiveAdmin.register Ballot do
   
   show title: :ballot_title do
     
-    h3 "Member Identification: " + ballot.member.member_identification.to_s
+    h3 "Voting Period: " + ballot.voting_period.season
     
     panel "Nominations" do
       table_for ballot.nominations.includes(:award) do
