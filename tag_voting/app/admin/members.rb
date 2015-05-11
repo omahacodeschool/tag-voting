@@ -37,4 +37,12 @@ ActiveAdmin.register Member do
     end
   end
   
+  form do |f|
+    f.inputs "Member Details" do
+      f.input :name
+      f.input :email
+    end
+    f.actions
+  end
+  
 end

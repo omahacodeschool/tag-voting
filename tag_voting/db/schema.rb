@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150511161528) do
+ActiveRecord::Schema.define(:version => 20150511184800) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -70,9 +70,9 @@ ActiveRecord::Schema.define(:version => 20150511161528) do
     t.string   "name"
     t.string   "email"
     t.boolean  "voted"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-    t.integer  "member_identification"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.integer  "member_identification", :limit => 8
   end
 
   create_table "nominations", :force => true do |t|

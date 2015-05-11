@@ -17,6 +17,7 @@ ActiveAdmin.register Ballot do
   end
   
   
+  
   filter :voting_period
   
   prods_array = []
@@ -52,7 +53,7 @@ ActiveAdmin.register Ballot do
     send_data csv.encode('Windows-1251'), type: 'text/csv; charset=windows-1251; header=present', disposition: "attachment; filename=report.csv"
   end
   
-  show do
+  show title: :member_identification do
     
     h3 "Member Identification: " + ballot.member.member_identification.to_s
     
@@ -80,4 +81,5 @@ ActiveAdmin.register Ballot do
       end
     end
   end
+  
 end

@@ -4,7 +4,7 @@ class MembersController < ApplicationController
   
   def show
     begin
-      @member = Member.find(params[:id])
+      @member = Member.find_by_member_identification(params[:id])
       @ballot = @member.current_ballot
       if @ballot.open?
         @voting_period = @ballot.voting_period
