@@ -47,4 +47,8 @@ class Ballot < ActiveRecord::Base
     self.productions.pluck(:id).include?(id)
   end
   
+  def member_identification
+    self.member.member_identification
+  end
+  
 end

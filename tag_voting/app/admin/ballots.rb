@@ -2,7 +2,20 @@ ActiveAdmin.register Ballot do
   
   require 'csv'
   
-  actions :all, except: [:new, :edit]
+  controller do
+      def scoped_collection
+        super.includes :member, :nominations
+      end
+    end
+    actions :all, except: [:new, :edit]
+  index do
+    column :id
+    column :member_identification
+    column :created_at
+    column :updated_at
+    actions
+  end
+  
   
   filter :voting_period
   
@@ -12,12 +25,12 @@ ActiveAdmin.register Ballot do
   batch_action :excel do |ballots|
     ballots.each do |ballot|
       ballot = Ballot.includes(:member, {nominations: [:award]}, :productions).find_by_id(ballot.to_i)
-      member_id = ballot.member.id
+      member_id = ballot.member.member_identification.to_s
       noms_array << ballot.nominations
       prods_array << ballot.productions
     end
     csv = CSV.generate( encoding: 'Windows-1251' ) do |csv|
-      csv << [ member_id ]
+      csv << [ "Member Identification: " + member_id ]
       noms_array.flatten.each do |nom|
         csv << [ nom.award_title ]
         csv << [ nom.nom1 ]  
@@ -41,7 +54,7 @@ ActiveAdmin.register Ballot do
   
   show do
     
-    
+    h3 "Member Identification: " + ballot.member.member_identification.to_s
     
     panel "Nominations" do
       table_for ballot.nominations.includes(:award) do

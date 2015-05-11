@@ -1,7 +1,8 @@
 class Member < ActiveRecord::Base
   has_many :ballots
   obfuscate_id
-  attr_accessible :name, :email, :voted
+  attr_accessible :name, :email, :voted, :member_identification
+  
 
 
   # Public Method #current_ballot
