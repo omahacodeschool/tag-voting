@@ -1,5 +1,8 @@
 class MemberMailer < ActionMailer::Base
-  default from: "tag.voting@gmail.com"
+  address = Mail::Address.new "awards@theatreartsguild.com"
+  address.display_name = "Theatre Arts Guild"
+  
+  default from: address
   
   def ballot_email(member)
     @member = member
