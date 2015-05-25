@@ -5,7 +5,7 @@ class Nomination < ActiveRecord::Base
   attr_accessible :award_id, :ballot_id, :nom1, :nom2, :nom3, :nom4, :nom5
 
   def award_title
-    self.award.title
+    self.award.try(:title)
   end
   
 end
