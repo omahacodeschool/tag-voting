@@ -9,7 +9,7 @@ class MemberMailerTest < ActionMailer::TestCase
       assert !ActionMailer::Base.deliveries.empty?
  
       # Test the body of the sent email contains what we expect it to
-      assert_equal ['tag.voting@gmail.com'], email.from
+      assert_equal ['awards@theatreartsguild.com'], email.from
       assert_equal ['anyemail@any.com'], email.to
       assert_equal 'TAG Awards Nominations Now Open!', email.subject
       # assert_equal read_fixture('invite').join, email.body.to_s

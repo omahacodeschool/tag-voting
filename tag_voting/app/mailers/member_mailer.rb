@@ -13,7 +13,7 @@ class MemberMailer < ActionMailer::Base
         Nomination.create(ballot_id: ballot.id, award_id: award.id)
       end
     end
-    mail(to: @member.email, subject: "TAG Awards Nominations Now Open!")
+    mail(to: @member.email, subject: "TAG Awards Nominations Now Open!"m reply_to: "awards@theatreartsguild.com")
   end
   
 end
